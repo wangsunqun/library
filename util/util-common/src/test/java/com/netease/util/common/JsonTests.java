@@ -10,8 +10,4 @@ class JsonTests {
     public void testJackson() {
         JsonUtil.from("", Map.class);
     }
-
-    public static void main(String[] args) {
-        ConfigUtils.getBoolean("");
-    }
 }

@@ -1,5 +1,7 @@
 package com.netease.util.common;
 
+import com.google.common.collect.Maps;
+import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
@@ -7,6 +9,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import java.io.InputStream;
+import java.lang.reflect.Field;
+import java.util.Map;
 import java.util.Properties;
 
 public class ConfigUtils {
@@ -105,7 +109,35 @@ public class ConfigUtils {
         return ObjectUtils.isNotEmpty(value) ? Boolean.parseBoolean(value) : defaultValue;
     }
 
-//    public static Map<String, String> getConfigsByKeyPre(String key) {
-//
-//    }
+    public static Map<String, Object> getConfigsByKeyPre(String key) {
+        Map<String, Object> configs = Maps.newHashMap();
+        root.forEach((k, v) -> {
+            if (((String) k).startsWith(key)) {
+                configs.put((String) k, v);
+            }
+        });
+
+        return configs;
+    }
+
+    public static <T> T getConfigsByKeyPre(String key, Class<T> clazz) {
+        Map<String, Object> configs = getConfigsByKeyPre(key);
+        if (MapUtils.isNotEmpty(configs)) {
+            try {
+                T t = clazz.newInstance();
+
+                for (Field field : clazz.getDeclaredFields()) {
+                    Object value = configs.get(key + "." + field.getName());
+                    field.setAccessible(true);
+                    field.set(t, value);
+                }
+
+                return t;
+            } catch (Exception e) {
+                throw new RuntimeException("getConfigsByKeyPre方法异常");
+            }
+        }
+
+        return null;
+    }
 }

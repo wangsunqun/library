@@ -4,53 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b17d6be-f2d3-46ff-b732-348663abac85" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_10_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_10_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_10_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_guava_2_10_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_10_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_10_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_10_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_4_7_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_2_6_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_13_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_1_3_72.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_72.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/network/HELP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/network/http/HELP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/network/http/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/network/http/src/main/java/com/netease/network/http/Http.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/network/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/HELP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/util-common/HELP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/util-common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/netease/util/common/ConfigUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/netease/util/common/JsonUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/util-common/src/test/java/com/netease/util/common/JsonTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/util-common/src/test/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/util-common/src/test/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/netease/library/LibraryApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/network/http/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/netease/library/LibraryApplicationTests.java" beforeDir="false" />
+    <list default="true" id="8b17d6be-f2d3-46ff-b732-348663abac85" name="Default Changelist" comment="1">
+      <change afterPath="$PROJECT_DIR$/util/util-common/src/test/java/com/netease/util/common/ConfigTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/netease/util/common/ConfigUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/netease/util/common/ConfigUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/test/java/com/netease/util/common/JsonTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/test/java/com/netease/util/common/JsonTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +68,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.ConfigTests.getConfigsByKeyPre2">
     <configuration name="JsonTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.netease.util.common.JsonTests" />
       <module name="util-common" />
@@ -135,8 +93,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ConfigTests.getConfigsByKeyPre" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="util-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.netease.util.common.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.netease.util.common" />
+      <option name="MAIN_CLASS_NAME" value="com.netease.util.common.ConfigTests" />
+      <option name="METHOD_NAME" value="getConfigsByKeyPre" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConfigTests.getConfigsByKeyPre2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="util-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.netease.util.common.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.netease.util.common" />
+      <option name="MAIN_CLASS_NAME" value="com.netease.util.common.ConfigTests" />
+      <option name="METHOD_NAME" value="getConfigsByKeyPre2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ConfigTests.getConfigsByKeyPre2" />
+        <item itemvalue="JUnit.ConfigTests.getConfigsByKeyPre" />
         <item itemvalue="Application.JsonTests" />
       </list>
     </recent_temporary>
@@ -153,8 +145,16 @@
       <workItem from="1609397707094" duration="9000" />
       <workItem from="1609397778477" duration="1262000" />
       <workItem from="1609400508857" duration="990000" />
-      <workItem from="1609401540289" duration="1728000" />
+      <workItem from="1609401540289" duration="3417000" />
     </task>
+    <task id="LOCAL-00001" summary="1">
+      <created>1609403381753</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1609403381753</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,16 +172,16 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/util/util-common/src/main/java/com/netease/util/common/ConfigUtils.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="field.getName()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
