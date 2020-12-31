@@ -1,4 +1,4 @@
-package com.netease.util.common;
+package com.wsq.util.common;
 
 import org.junit.Test;
 

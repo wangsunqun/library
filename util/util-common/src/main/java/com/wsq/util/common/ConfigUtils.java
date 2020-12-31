@@ -1,4 +1,4 @@
-package com.netease.util.common;
+package com.wsq.util.common;
 
 import com.google.common.collect.Maps;
 import org.apache.commons.collections4.MapUtils;
