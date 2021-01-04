@@ -125,6 +125,7 @@ final class SnowflakeIdWorker {
                 throw new SnowflakeException(String.format("Clock moved backwards.  Refusing to generate id for %d milliseconds", lastTimestamp - timestamp));
             }
         }
+
         //如果是同一时间生成的，则进行毫秒内序列
         if (lastTimestamp == timestamp) {
             sequence = (sequence + 1) & sequenceMask;
@@ -158,7 +159,7 @@ final class SnowflakeIdWorker {
             //获取jvm pid
             stringBuilder.append(name.split("@")[0]);
         }
-        //MAC + PID 的 hashcode 获取16个低位
+        //dataCenterId + PID 的 hashcode 获取16个低位
         return (stringBuilder.toString().hashCode() & 0xffff) % (maxWorkerId + 1);
     }
 

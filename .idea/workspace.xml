@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b17d6be-f2d3-46ff-b732-348663abac85" name="Default Changelist" comment="时间工具">
-      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeIdUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeIdWorker.java" afterDir="false" />
+    <list default="true" id="8b17d6be-f2d3-46ff-b732-348663abac85" name="Default Changelist" comment="雪花算法">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeIdWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeIdWorker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,12 +74,6 @@
     <configuration name="SnowflakeIdUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.wsq.util.common.snowflake.SnowflakeIdUtils" />
       <module name="util-common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wsq.util.common.snowflake.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -108,8 +100,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.HttpTest.httpTest" />
       <item itemvalue="Application.SnowflakeIdUtils" />
+      <item itemvalue="JUnit.HttpTest.httpTest" />
     </list>
     <recent_temporary>
       <list>
@@ -168,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609750060240</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="雪花算法">
+      <created>1609751656160</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1609751656160</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +190,8 @@
     <MESSAGE value="修改项目名" />
     <MESSAGE value="1" />
     <MESSAGE value="时间工具" />
-    <option name="LAST_COMMIT_MESSAGE" value="时间工具" />
+    <MESSAGE value="雪花算法" />
+    <option name="LAST_COMMIT_MESSAGE" value="雪花算法" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -200,11 +200,6 @@
           <url>file://$PROJECT_DIR$/network/http/src/test/java/com.wsq.network.http/HttpTest.java</url>
           <line>12</line>
           <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeIdWorker.java</url>
-          <line>93</line>
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
