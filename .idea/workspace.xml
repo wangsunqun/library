@@ -4,33 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b17d6be-f2d3-46ff-b732-348663abac85" name="Default Changelist" comment="修改项目名">
-      <change afterPath="$PROJECT_DIR$/network/http/src/test/java/com.wsq.network.http/HttpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_10_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_10_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_10_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_10_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_10_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_10_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_guava_2_10_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_guava_2_10_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_10_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_10_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_10_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_10_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_10_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_10_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_4_7_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_4_7_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_2_6_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_2_6_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_2_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_2_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_13_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_13_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_1_3_72.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_1_3_72.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_72.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_72.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_12.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" afterDir="false" />
+    <list default="true" id="8b17d6be-f2d3-46ff-b732-348663abac85" name="Default Changelist" comment="1">
+      <change afterPath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/dto/HttpResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/executor/OkHttpRequester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/interceptor/DefaultRetryInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/response/ResponseStatusEnums.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/response/Result.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/http/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/network/http/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/Executor.java" beforeDir="false" afterPath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/Executor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/Executor.java" beforeDir="false" afterPath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/executor/Executor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/Http.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/http/src/test/java/com.wsq.network.http/HttpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/network/http/src/test/java/com.wsq.network.http/HttpTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/util-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/ConfigUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/config/ConfigUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/json/JsonUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/test/java/com/wsq/util/common/ConfigTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/test/java/com/wsq/util/common/ConfigTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/test/java/com/wsq/util/common/JsonTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/test/java/com/wsq/util/common/JsonTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +28,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -66,7 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mob-library" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -81,6 +70,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\library\network\http\src\main\java\com\wsq\network\http" />
       <recent name="D:\java\library\util\util-common\src\test\resources" />
     </key>
   </component>
@@ -91,7 +81,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ConfigTests.getConfigsByKeyPre2">
+  <component name="RunManager" selected="JUnit.HttpTest.httpTest">
     <configuration name="JsonTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.netease.util.common.JsonTests" />
       <module name="util-common" />
@@ -105,15 +95,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -150,8 +138,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HttpTest.httpTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="http" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wsq.network.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.wsq.network.http" />
+      <option name="MAIN_CLASS_NAME" value="com.wsq.network.http.HttpTest" />
+      <option name="METHOD_NAME" value="httpTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HttpTest.httpTest" />
         <item itemvalue="JUnit.ConfigTests.getConfigsByKeyPre2" />
         <item itemvalue="JUnit.ConfigTests.getConfigsByKeyPre" />
         <item itemvalue="Application.JsonTests" />
@@ -218,21 +223,16 @@
     <MESSAGE value="修改项目名" />
     <option name="LAST_COMMIT_MESSAGE" value="修改项目名" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="681" y="227" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609576960671">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="681" y="227" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1609576960671" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1609569547669">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1609569547669" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1609572409101">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1609572409101" />
-  </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/network/http/src/test/java/com.wsq.network.http/HttpTest.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="field.getName()" language="JAVA" />

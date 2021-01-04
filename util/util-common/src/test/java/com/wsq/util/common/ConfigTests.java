@@ -1,5 +1,6 @@
 package com.wsq.util.common;
 
+import com.wsq.util.common.config.ConfigUtils;
 import lombok.Data;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.wsq.util.common;
+package com.wsq.util.common.json;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -37,7 +37,7 @@ import java.util.*;
  * 2020/12/31 14:13
  */
 @Slf4j
-public class JsonUtil {
+public class JsonUtils {
     private static ObjectMapper mapper;
 
     private static final Set<JsonReadFeature> JSON_READ_FEATURES_ENABLED = Sets.newHashSet(

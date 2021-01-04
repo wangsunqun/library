@@ -1,6 +1,7 @@
-package com.wsq.util.common;
+package com.wsq.util.common.config;
 
 import com.google.common.collect.Maps;
+import com.wsq.util.common.json.JsonUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -47,7 +48,7 @@ public class ConfigUtils {
 
     public static <T> T getObject(String key, Class<T> clazz) {
         String value = getString(key);
-        return StringUtils.isNotBlank(value) ? JsonUtil.from(value, clazz) : null;
+        return StringUtils.isNotBlank(value) ? JsonUtils.from(value, clazz) : null;
     }
 
     public static String getString(String key) {

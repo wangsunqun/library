@@ -1,5 +1,6 @@
 package com.wsq.util.common;
 
+import com.wsq.util.common.json.JsonUtils;
 import org.junit.Test;
 
 import java.util.Map;
@@ -8,6 +9,6 @@ class JsonTests {
 
     @Test
     public void testJackson() {
-        JsonUtil.from("", Map.class);
+        JsonUtils.from("", Map.class);
     }
 }
