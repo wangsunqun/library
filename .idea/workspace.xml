@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b17d6be-f2d3-46ff-b732-348663abac85" name="Default Changelist" comment="1">
-      <change afterPath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/dto/HttpResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/executor/OkHttpRequester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/interceptor/DefaultRetryInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/response/ResponseStatusEnums.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/response/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/date/DateUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/Executor.java" beforeDir="false" afterPath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/executor/Executor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/Http.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/network/http/src/test/java/com.wsq.network.http/HttpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/network/http/src/test/java/com.wsq.network.http/HttpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/ConfigUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/config/ConfigUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/json/JsonUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/util-common/src/test/java/com/wsq/util/common/ConfigTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/test/java/com/wsq/util/common/ConfigTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/util-common/src/test/java/com/wsq/util/common/JsonTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/test/java/com/wsq/util/common/JsonTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609406929092</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1">
+      <created>1609731168800</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1609731168800</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,10 +213,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1" />
     <MESSAGE value="修复配置异常" />
     <MESSAGE value="修改项目名" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改项目名" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
