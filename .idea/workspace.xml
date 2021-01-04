@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b17d6be-f2d3-46ff-b732-348663abac85" name="Default Changelist" comment="1">
-      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/date/DateUtils.java" afterDir="false" />
+    <list default="true" id="8b17d6be-f2d3-46ff-b732-348663abac85" name="Default Changelist" comment="时间工具">
+      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeIdUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeIdWorker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +45,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -58,6 +60,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\library\util\util-common\src\main\java\com\wsq\util\common\snowflake" />
       <recent name="D:\java\library\network\http\src\main\java\com\wsq\network\http" />
       <recent name="D:\java\library\util\util-common\src\test\resources" />
     </key>
@@ -69,13 +72,13 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.HttpTest.httpTest">
-    <configuration name="JsonTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.netease.util.common.JsonTests" />
+  <component name="RunManager" selected="Application.SnowflakeIdUtils">
+    <configuration name="SnowflakeIdUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wsq.util.common.snowflake.SnowflakeIdUtils" />
       <module name="util-common" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.netease.util.common.*" />
+          <option name="PATTERN" value="com.wsq.util.common.snowflake.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -94,46 +97,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConfigTests.getConfigsByKeyPre" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="util-common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.netease.util.common.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.netease.util.common" />
-      <option name="MAIN_CLASS_NAME" value="com.netease.util.common.ConfigTests" />
-      <option name="METHOD_NAME" value="getConfigsByKeyPre" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ConfigTests.getConfigsByKeyPre2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="util-common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.netease.util.common.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.netease.util.common" />
-      <option name="MAIN_CLASS_NAME" value="com.netease.util.common.ConfigTests" />
-      <option name="METHOD_NAME" value="getConfigsByKeyPre2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="HttpTest.httpTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="http" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wsq.network.http.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <option name="PACKAGE_NAME" value="com.wsq.network.http" />
       <option name="MAIN_CLASS_NAME" value="com.wsq.network.http.HttpTest" />
       <option name="METHOD_NAME" value="httpTest" />
@@ -142,12 +107,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.HttpTest.httpTest" />
+      <item itemvalue="Application.SnowflakeIdUtils" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SnowflakeIdUtils" />
         <item itemvalue="JUnit.HttpTest.httpTest" />
-        <item itemvalue="JUnit.ConfigTests.getConfigsByKeyPre2" />
-        <item itemvalue="JUnit.ConfigTests.getConfigsByKeyPre" />
-        <item itemvalue="Application.JsonTests" />
       </list>
     </recent_temporary>
   </component>
@@ -194,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609731168800</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="时间工具">
+      <created>1609750060240</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1609750060240</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +190,8 @@
     <MESSAGE value="修复配置异常" />
     <MESSAGE value="修改项目名" />
     <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
+    <MESSAGE value="时间工具" />
+    <option name="LAST_COMMIT_MESSAGE" value="时间工具" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -226,11 +201,21 @@
           <line>12</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeIdWorker.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="field.getName()" language="JAVA" />
+      </configuration>
+      <configuration name="Application">
+        <watch expression="new String(mac)" language="JAVA" />
+        <watch expression="stringBuilder.toString().hashCode()" language="JAVA" />
+        <watch expression="stringBuilder.toString().hashCode() &amp; 0xffff" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
