@@ -5,8 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b17d6be-f2d3-46ff-b732-348663abac85" name="Default Changelist" comment="雪花算法">
+      <change afterPath="$PROJECT_DIR$/network/network-http/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/network/network-http/src/main/java/com/wsq/library/network/http/Http.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/network/network-http/src/main/java/com/wsq/library/network/http/dto/HttpResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/network/network-http/src/main/java/com/wsq/library/network/http/executor/Executor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/network/network-http/src/main/java/com/wsq/library/network/http/executor/OkHttpRequester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/network/network-http/src/main/java/com/wsq/library/network/http/interceptor/DefaultRetryInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/network/network-http/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/network/network-http/src/test/java/com/wsq/library/network/http/HttpTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeIdWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeIdWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/http/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/http/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/Http.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/dto/HttpResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/executor/Executor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/executor/OkHttpRequester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/http/src/main/java/com/wsq/network/http/interceptor/DefaultRetryInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/http/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/http/src/test/java/com.wsq.network.http/HttpTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/network/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/config/ConfigUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/library/util/common/config/ConfigUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/date/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/library/util/common/date/DateUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/json/JsonUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/library/util/common/json/JsonUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/response/ResponseStatusEnums.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/library/util/common/response/ResponseStatusEnums.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/response/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/library/util/common/response/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/library/util/common/snowflake/SnowflakeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeIdUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/library/util/common/snowflake/SnowflakeIdUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/util/common/snowflake/SnowflakeIdWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/main/java/com/wsq/library/util/common/snowflake/SnowflakeIdWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/test/java/com/wsq/util/common/ConfigTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/test/java/com/wsq/library/util/common/ConfigTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util-common/src/test/java/com/wsq/util/common/JsonTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/util-common/src/test/java/com/wsq/library/util/common/JsonTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +59,6 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="alwaysUpdateSnapshots" value="true" />
-        <option name="mavenHome" value="E:\idea\IntelliJ IDEA 2020.2.1\plugins\maven\lib\maven3" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -62,6 +92,11 @@
       <recent name="D:\java\library\network\http\src\main\java\com\wsq\network\http" />
       <recent name="D:\java\library\util\util-common\src\test\resources" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.wsq.library.util.common.util" />
+      <recent name="com.wsq.library.util.common" />
+      <recent name="com.wsq.util" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -78,19 +113,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="HttpTest.httpTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="http" />
+      <module name="network-http" />
       <option name="PACKAGE_NAME" value="com.wsq.network.http" />
       <option name="MAIN_CLASS_NAME" value="com.wsq.network.http.HttpTest" />
       <option name="METHOD_NAME" value="httpTest" />
@@ -124,6 +148,7 @@
       <workItem from="1609400508857" duration="990000" />
       <workItem from="1609401540289" duration="6019000" />
       <workItem from="1609566865463" duration="7904000" />
+      <workItem from="1609834519250" duration="1541000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1609403381753</created>
@@ -167,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609751656160</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="雪花算法">
+      <created>1609760987665</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1609760987665</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +229,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/network/http/src/test/java/com.wsq.network.http/HttpTest.java</url>
+          <url>file://$PROJECT_DIR$/network/network-http/src/test/java/com/wsq/library/network/http/HttpTest.java</url>
           <line>12</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>

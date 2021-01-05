@@ -4,18 +4,22 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.wsq.library</groupId>
-        <artifactId>library</artifactId>
+        <artifactId>network</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>network</artifactId>
+    <artifactId>network-http</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>network-http</module>
-    </modules>
+    <packaging>jar</packaging>
 
     <dependencies>
+        <dependency>
+            <groupId>com.wsq</groupId>
+            <artifactId>util-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+        </dependency>
     </dependencies>
 </project>
