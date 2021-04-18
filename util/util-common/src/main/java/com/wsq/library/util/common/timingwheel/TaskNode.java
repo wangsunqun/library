@@ -15,6 +15,6 @@ public class TaskNode {
 
     public TaskNode(Runnable task, long expire) {
         this.task = task;
-        expire = System.currentTimeMillis() + expire;
+        this.expire = System.currentTimeMillis() + expire;
     }
 }

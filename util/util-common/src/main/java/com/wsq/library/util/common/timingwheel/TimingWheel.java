@@ -51,7 +51,8 @@ public class TimingWheel {
     public boolean add(TaskNode taskNode) {
         long expire = taskNode.getExpire();
 
-        // 向上取整
+        // 向上取整，解释一下为什么要向上
+        // 比如我们时间间隔是10s，currentTime是100s， 当前是109s，如果不是取110s那么新增101s的任务就不会执行
         if (expire < currentTime + tickMis) {
             //过期任务直接执行
             return false;
