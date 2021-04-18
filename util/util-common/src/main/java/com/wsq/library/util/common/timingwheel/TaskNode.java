@@ -10,11 +10,11 @@ public class TaskNode {
 
     private Runnable task;
 
-    private long expire;
+    private long expireAt;
     private Bucket bucket;
 
     public TaskNode(Runnable task, long expire) {
         this.task = task;
-        this.expire = System.currentTimeMillis() + expire;
+        this.expireAt = System.currentTimeMillis() + expire;
     }
 }

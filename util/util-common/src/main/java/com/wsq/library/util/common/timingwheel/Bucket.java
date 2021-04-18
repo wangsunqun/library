@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 @Data
 public class Bucket implements Delayed {
     // 过期时间
-    private AtomicLong expire = new AtomicLong();
+    private AtomicLong expireAt = new AtomicLong(-1);
 
     // 头结点
     private TaskNode head;
@@ -54,19 +54,20 @@ public class Bucket implements Delayed {
             consumer.accept(node);
             node = node.next;
         }
+        expireAt.set(-1);
     }
 
     public boolean setExpire(long expire) {
-        return this.expire.getAndSet(expire) != expire;
+        return this.expireAt.getAndSet(expire) != expire;
     }
 
     @Override
     public long getDelay(TimeUnit unit) {
-        return Math.max(0, expire.longValue() - System.currentTimeMillis());
+        return Math.max(0, expireAt.longValue() - System.currentTimeMillis());
     }
 
     @Override
     public int compareTo(Delayed o) {
-        return expire.intValue() - ((Bucket) o).expire.intValue();
+        return expireAt.intValue() - ((Bucket) o).expireAt.intValue();
     }
 }

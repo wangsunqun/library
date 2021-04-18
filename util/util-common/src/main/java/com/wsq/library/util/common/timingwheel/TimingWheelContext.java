@@ -32,7 +32,7 @@ public class TimingWheelContext {
                     // 100ms间隔获取任务，直到有任务了才会去更新时间轮的指针，类似惰性修改的味道
                     Bucket bucket = delayQueue.poll(100, TimeUnit.MILLISECONDS);
                     if (bucket != null) {
-                        timingWheel.advanceClock(bucket.getExpire().get());
+                        timingWheel.advanceClock(bucket.getExpireAt().get());
                         bucket.handleTask(this::add);
                     }
                 } catch (InterruptedException e) {
@@ -43,6 +43,7 @@ public class TimingWheelContext {
     }
 
     public void add(TaskNode task) {
+        // 降级操作
         if (!timingWheel.add(task)) {
             threadPool.submit(task.getTask());
         }

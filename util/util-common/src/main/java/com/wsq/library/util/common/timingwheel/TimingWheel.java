@@ -49,17 +49,17 @@ public class TimingWheel {
     }
 
     public boolean add(TaskNode taskNode) {
-        long expire = taskNode.getExpire();
+        long expireAt = taskNode.getExpireAt();
 
         // 向上取整，解释一下为什么要向上
-        // 比如我们时间间隔是10s，currentTime是100s， 当前是109s，如果不是取110s那么新增101s的任务就不会执行
-        if (expire < currentTime + tickMis) {
+        // 比如我们时间间隔是10s，currentTime是100s， 当前是109s，如果不是取110s, 那么新增101s的任务不会执行
+        if (expireAt < currentTime + tickMis) {
             //过期任务直接执行
             return false;
         }
 
-        if (expire < currentTime + interval) {
-            long virtualId = expire / tickMis;
+        if (expireAt < currentTime + interval) {
+            long virtualId = expireAt / tickMis;
             int index = (int) (virtualId % wheelSize);
 
             Bucket bucket = buckets[index];
@@ -92,11 +92,11 @@ public class TimingWheel {
     /**
      * 推进时间
      */
-    public void advanceClock(long timestamp) {
-        if (timestamp >= currentTime + tickMis) {
-            currentTime = timestamp - (timestamp % tickMis);
+    public void advanceClock(long expireAt) {
+        if (expireAt >= currentTime + tickMis) {
+            currentTime = expireAt - (expireAt % tickMis);
             if (overflowWheel != null) {
-                getOverflowWheel().advanceClock(timestamp);
+                getOverflowWheel().advanceClock(expireAt);
             }
         }
     }
