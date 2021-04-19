@@ -19,6 +19,9 @@
     </modules>
 
     <properties>
+        <!--Mob-Library库的版本，所有packaging为pom的库发生变化，务必更新该版本-->
+        <library.version>1.0.0-SNAPSHOT</library.version>
+
         <java.version>1.8</java.version>
 
         <slf4j-api.version>1.7.30</slf4j-api.version>
@@ -63,12 +66,12 @@
             <dependency>
                 <groupId>com.wsq.library</groupId>
                 <artifactId>network-http</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${library.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.wsq.library</groupId>
                 <artifactId>util-common</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${library.version}</version>
             </dependency>
 
             <!--OkHttp-->
