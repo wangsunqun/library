@@ -3,23 +3,25 @@ package com.wsq.library.util.common.stateMachine;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Setter
 @Getter
-public class State<S extends Enum<S>, E extends Enum<E>> {
+public class State {
     // 状态
-    private S state;
+    private Enum<?> state;
 
     // 该状态下可以执行的任务
-    private Map<Event<E>, AbstractAction<E, S>> actionMap;
+    private Map<Enum<?>, DefaultAction> actionMap = new HashMap<>();
 
-    public State(S state, Map<Event<E>, AbstractAction<E, S>> actionMap) {
+    public State(Enum<?> state) {
         this.state = state;
-        this.actionMap = actionMap;
     }
 
-    public void addAction(Event<E> event, AbstractAction<E, S> action) {
+    public void addAction(Enum<?> event, DefaultAction action) {
+        action.setEvent(event);
+        action.setCurrentState(state);
         actionMap.put(event, action);
     }
 }

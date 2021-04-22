@@ -14,6 +14,7 @@
 
     <modules>
         <module>util-common</module>
+        <module>util-distributed-id</module>
     </modules>
 
     <dependencies>

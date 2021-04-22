@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ActionResult {
-    private State nextState;
+    private Enum<?> nextState;
     private Object data;
 }

@@ -3,11 +3,8 @@ package com.wsq.library.network.http;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.wsq.library.network.http.dto.HttpResponse;
 import com.wsq.library.network.http.executor.Executor;
-import com.wsq.library.util.common.config.ConfigUtils;
 
 import java.util.Map;
-
-import static com.wsq.library.network.http.executor.Executor.getExecutor;
 
 public class Http {
     private static final boolean DEFAULT_LOG = ConfigUtils.getBooleanDefault("http.enableLog", true);
