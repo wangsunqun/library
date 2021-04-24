@@ -5,6 +5,7 @@ import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -17,6 +18,8 @@ public class ConfigUtils {
     private static Properties root = new Properties();
     private static Properties rootProp = new Properties();
     private static Properties rootYml = new Properties();
+
+    Environment e;
 
     static {
         // properties
@@ -43,11 +46,6 @@ public class ConfigUtils {
 
         root.putAll(rootYml);
         root.putAll(rootProp);
-    }
-
-    public static <T> T getObject(String key, Class<T> clazz) {
-        String value = getString(key);
-        return StringUtils.isNotBlank(value) ? JsonUtils.from(value, clazz) : null;
     }
 
     public static String getString(String key) {

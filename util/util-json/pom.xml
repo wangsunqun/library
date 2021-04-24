@@ -4,20 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.wsq.library</groupId>
-        <artifactId>library</artifactId>
+        <artifactId>util</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>util</artifactId>
+    <artifactId>util-json</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>util-common</module>
-        <module>util-json</module>
-        <module>util-config-apollo</module>
+        <module>util-jackson</module>
+        <module>util-fastjson</module>
     </modules>
-
-    <dependencies>
-    </dependencies>
 </project>

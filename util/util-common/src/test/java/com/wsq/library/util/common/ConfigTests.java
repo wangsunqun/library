@@ -2,14 +2,9 @@ package com.wsq.library.util.common;
 
 import com.wsq.library.util.common.config.ConfigUtils;
 import lombok.Data;
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-
-import static org.springframework.core.env.Profiles.of;
 
 public class ConfigTests {
     @Test

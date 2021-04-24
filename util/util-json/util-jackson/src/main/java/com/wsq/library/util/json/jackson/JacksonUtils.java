@@ -1,4 +1,4 @@
-package com.wsq.library.util.common.json;
+package com.wsq.library.util.json.jackson;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -33,11 +33,12 @@ import java.util.*;
 
 /**
  * json工具类
+ *
  * @author wsq
  * 2020/12/31 14:13
  */
 @Slf4j
-public class JsonUtils {
+public class JacksonUtils {
     private static ObjectMapper mapper;
 
     private static final Set<JsonReadFeature> JSON_READ_FEATURES_ENABLED = Sets.newHashSet(
