@@ -8,15 +8,8 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>util</artifactId>
+    <artifactId>state-machine</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-    <modules>
-        <module>util-common</module>
-        <module>util-json</module>
-    </modules>
-
-    <dependencies>
-    </dependencies>
 </project>

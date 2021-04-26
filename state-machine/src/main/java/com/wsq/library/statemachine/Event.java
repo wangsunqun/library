@@ -1,4 +1,4 @@
-package com.wsq.library.util.common.stateMachine;
+package com.wsq.library.statemachine;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,10 +11,10 @@ import java.util.HashMap;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Event extends HashMap<String, Object> {
-    private Enum<?> event;
+public class Event<E extends Enum<E>> extends HashMap<String, Object> {
+    private E event;
 
-    public Event(Enum<?> event) {
+    public Event(E event) {
         this.event = event;
     }
 }
