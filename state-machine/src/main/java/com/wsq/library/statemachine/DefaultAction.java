@@ -1,10 +1,12 @@
 package com.wsq.library.statemachine;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Data
+@NoArgsConstructor
 public class DefaultAction<S extends Enum<S>, E extends Enum<E>> {
     private StateMachineContext<S, E> context;
 

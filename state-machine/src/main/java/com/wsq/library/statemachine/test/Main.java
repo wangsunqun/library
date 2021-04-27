@@ -1,18 +1,20 @@
-package com.wsq.library.statemachine;
+package com.wsq.library.statemachine.test;
 
+import com.wsq.library.statemachine.*;
 import lombok.AllArgsConstructor;
 
 
 /**
+ * 测试该类需要在resources下建立spi
+ *
  * @author wsq
  * 2021/4/22 13:49
  */
 public class Main {
     public static void main(String[] args) {
-        StateMachine<Main.StateEnum, Main.EventEnum> stateMachine = new StateMachine<>();
-        StateMachine<Main.StateEnum, Main.EventEnum> machine = stateMachine.build("wsq", null);
+        StateMachine<StateEnum, EventEnum> machine = new StateMachine<>("wsq", StateEnum.INIT);
 
-        ActionResult publish = machine.publish(new Event<>(Main.EventEnum.PASS));
+        ActionResult publish = machine.publish(new Event<>(EventEnum.PASS));
 
         System.out.println();
     }
@@ -43,7 +45,7 @@ public class Main {
                     event(EventEnum.PASS).
                     target(StateEnum.SUCCESS).
                     choise(event -> true).
-                    yes(null).
+                    yes(new DefaultAction<>()).
                     no(null).
                     end();
         }

@@ -24,28 +24,28 @@ public abstract class AbstractConfig<S extends Enum<S>, E extends Enum<E>> {
         return this;
     }
 
-    protected AbstractConfig<S, E> source(S state) {
+    public AbstractConfig<S, E> source(S state) {
         StateMachineContext<S, E> context = getContext();
         context.setSource(state);
 
         return this;
     }
 
-    protected AbstractConfig<S, E> event(E event) {
+    public AbstractConfig<S, E> event(E event) {
         StateMachineContext<S, E> context = getContext();
         context.setEvent(new Event<>(event));
 
         return this;
     }
 
-    protected AbstractConfig<S, E> target(S state) {
+    public AbstractConfig<S, E> target(S state) {
         StateMachineContext<S, E> context = getContext();
         context.setTarget(state);
 
         return this;
     }
 
-    protected AbstractConfig<S, E> action(DefaultAction<S, E> action) {
+    public AbstractConfig<S, E> action(DefaultAction<S, E> action) {
         StateMachineContext<S, E> context = getContext();
         action.setContext(context);
         context.setAction(action);
@@ -53,7 +53,7 @@ public abstract class AbstractConfig<S extends Enum<S>, E extends Enum<E>> {
         return this;
     }
 
-    protected Choise choise(Function<Event<E>, Boolean> function) {
+    public Choise choise(Function<Event<E>, Boolean> function) {
         StateMachineContext<S, E> context = getContext();
 
         return new Choise(function.apply(context.getEvent()), this);
@@ -72,6 +72,7 @@ public abstract class AbstractConfig<S extends Enum<S>, E extends Enum<E>> {
         public Choise yes(DefaultAction<S, E> action) {
             if (result && Objects.nonNull(action)) {
                 StateMachineContext<S, E> context = config.getContext();
+                action.setContext(context);
                 context.setAction(action);
             }
 
@@ -81,6 +82,7 @@ public abstract class AbstractConfig<S extends Enum<S>, E extends Enum<E>> {
         public Choise no(DefaultAction<S, E> action) {
             if (!result && Objects.nonNull(action)) {
                 StateMachineContext<S, E> context = config.getContext();
+                action.setContext(context);
                 context.setAction(action);
             }
 

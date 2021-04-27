@@ -7,6 +7,9 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.*;
 
 /**
+ * 本状态机目标是轻量级，所以不涉及缓存和持久化
+ * 使用者可以结合自身需求结合ThreadLocal或者持久化手段进行保存状态机
+ *
  * @author wsq
  * 2021/4/22 19:37
  */
@@ -27,14 +30,14 @@ public class StateMachine<S extends Enum<S>, E extends Enum<E>> {
         }
     }
 
-    public StateMachine<S, E> build(String name, S state) {
+    public StateMachine(String configName, S state) {
         if (MapUtils.isEmpty(configMap)) {
             throw new RuntimeException("cannot find config");
         }
 
-        AbstractConfig<?, ?> config = StringUtils.isBlank(name) ? configMap.entrySet().iterator().next().getValue() : configMap.get(name);
+        AbstractConfig<?, ?> config = StringUtils.isBlank(configName) ? configMap.entrySet().iterator().next().getValue() : configMap.get(configName);
         if (Objects.isNull(config)) {
-            throw new RuntimeException("cannot find config by: " + name);
+            throw new RuntimeException("cannot find config by: " + configName);
         }
 
         config.getContextMap().forEach((k, v) -> {
@@ -44,7 +47,6 @@ public class StateMachine<S extends Enum<S>, E extends Enum<E>> {
 
         this.currentState = state == null ? (S) config.getContextMap().get(0).getSource() : state;
 
-        return this;
     }
 
     public ActionResult publish(Event<E> event) {
