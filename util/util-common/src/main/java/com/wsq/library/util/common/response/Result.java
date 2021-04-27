@@ -1,6 +1,6 @@
 package com.wsq.library.util.common.response;
 
-import com.wsq.library.util.common.config.ConfigUtils;
+import com.wsq.library.util.common.config.ConfigUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -23,7 +23,7 @@ public class Result<T> {
     private static int serviceId;
 
     static {
-        Integer serviceIdInt = ConfigUtils.getInt("service.id");
+        Integer serviceIdInt = ConfigUtil.getInt("service.id");
         if (serviceIdInt == null) {
             throw new RuntimeException("service id 不能为空!!!");
         }
