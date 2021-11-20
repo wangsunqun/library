@@ -17,7 +17,7 @@
 * 在resources下建立SPI(META-INF/services)，并配置响应的自定义配置
 
 ## 使用示例
-![Image text](picture/1.png)
+![Image text](https://github.com/wangsunqun/library/blob/master/stateMachine/src/main/resources/picture/1.png)
 
 ```
  public static void main(String[] args) {
