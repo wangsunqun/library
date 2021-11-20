@@ -14,7 +14,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>util</module>
+        <module>common</module>
+        <module>db-driver</module>
         <module>json</module>
         <module>stateMachine</module>
         <module>timingWheel</module>
@@ -37,6 +38,7 @@
         <jackson.version>2.10.4</jackson.version>
         <apollo.version>1.0.0</apollo.version>
         <hutool.version>5.6.3</hutool.version>
+        <es.version>7.8.1</es.version>
     </properties>
 
     <dependencies>
@@ -57,6 +59,16 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collections4.version}</version>
+        </dependency>
+        <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>
             <version>${hutool.version}</version>
@@ -72,19 +84,14 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- 模块 -->
+            <!-- 本地项目 -->
             <dependency>
                 <groupId>com.wsq.library</groupId>
-                <artifactId>network-http</artifactId>
-                <version>${library.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.wsq.library</groupId>
-                <artifactId>util-common</artifactId>
+                <artifactId>fastjson</artifactId>
                 <version>${library.version}</version>
             </dependency>
 
-            <!--OkHttp-->
+            <!-- OkHttp -->
             <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
@@ -104,7 +111,6 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastJson.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
@@ -140,15 +146,18 @@
                 <artifactId>jackson-datatype-guava</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
+
+            <!-- es -->
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${es.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${es.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

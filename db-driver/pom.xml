@@ -8,12 +8,11 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>json</artifactId>
+    <artifactId>db-driver</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>jackson</module>
-        <module>fastjson</module>
+        <module>es</module>
     </modules>
 </project>

@@ -1,7 +1,7 @@
 package com.wsq.library.statemachine;
 
 import cn.hutool.core.map.MapUtil;
-import cn.hutool.core.util.StrUtil;
+import com.wsq.library.statemachine.config.AbstractStateMachineConfig;
 import lombok.Data;
 
 import java.util.*;
@@ -19,13 +19,13 @@ public class StateMachine<S extends Enum<S>, E extends Enum<E>> {
 
     private Map<S, Map<E, StateMachineContext<S, E>>> map = new HashMap<>();
 
-    private static Map<String, AbstractConfig<?, ?>> configMap = new LinkedHashMap<>();
+    private static Map<String, AbstractStateMachineConfig<?, ?>> configMap = new LinkedHashMap<>();
 
     static {
-        ServiceLoader<AbstractConfig> configs = ServiceLoader.load(AbstractConfig.class);
+        ServiceLoader<AbstractStateMachineConfig> configs = ServiceLoader.load(AbstractStateMachineConfig.class);
 
-        for (AbstractConfig<?, ?> config : configs) {
-            AbstractConfig<?, ?> configObj = config.build();
+        for (AbstractStateMachineConfig<?, ?> config : configs) {
+            AbstractStateMachineConfig<?, ?> configObj = config.build();
             configMap.put(configObj.getStateMachineName(), configObj);
         }
     }
@@ -35,17 +35,17 @@ public class StateMachine<S extends Enum<S>, E extends Enum<E>> {
             throw new RuntimeException("cannot find config");
         }
 
-        AbstractConfig<?, ?> config = StrUtil.isBlank(configName) ? configMap.entrySet().iterator().next().getValue() : configMap.get(configName);
+        AbstractStateMachineConfig<?, ?> config = configMap.get(configName);
         if (Objects.isNull(config)) {
             throw new RuntimeException("cannot find config by: " + configName);
         }
 
-        config.getContextMap().forEach((k, v) -> {
-            Map<E, StateMachineContext<S, E>> contextMap = map.computeIfAbsent((S) v.getSource(), key -> new HashMap<>());
-            contextMap.put((E) v.getEvent().getEvent(), (StateMachineContext<S, E>) v);
-        });
+        config.getContextList().forEach(context -> map.computeIfAbsent((S) context.getSource(),
+                key -> new HashMap<E, StateMachineContext<S, E>>() {{
+                    put((E) context.getEvent().getEvent(), (StateMachineContext<S, E>) context);
+                }}));
 
-        this.currentState = state == null ? (S) config.getContextMap().get(0).getSource() : state;
+        this.currentState = state == null ? (S) config.getContextList().get(0).getSource() : state;
 
     }
 
@@ -57,11 +57,9 @@ public class StateMachine<S extends Enum<S>, E extends Enum<E>> {
 
             if (Objects.nonNull(context)) {
                 DefaultAction<S, E> action = context.getAction();
-                if (Objects.isNull(action)) {
-                    action = new DefaultAction<>(context);
+                if (Objects.nonNull(action)) {
+                    return action.doHandle();
                 }
-
-                return action.doHandle();
             }
         }
 

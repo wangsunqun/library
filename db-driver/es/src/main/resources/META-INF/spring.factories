@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.wsq.library.es.EsClient,\
+com.wsq.library.es.EsConfig

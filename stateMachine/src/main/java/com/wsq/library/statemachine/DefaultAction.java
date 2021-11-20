@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Data
 @NoArgsConstructor
-public class DefaultAction<S extends Enum<S>, E extends Enum<E>> {
+public abstract class DefaultAction<S extends Enum<S>, E extends Enum<E>> {
     private StateMachineContext<S, E> context;
 
     public DefaultAction(StateMachineContext<S, E> context) {
@@ -17,11 +17,9 @@ public class DefaultAction<S extends Enum<S>, E extends Enum<E>> {
     public ActionResult doHandle() {
         log.info("开始执行状态任务, event:{}, source:{}, target:{}",
                 context.getEvent(), context.getSource(), context.getTarget());
-        Object data = exec(context.getSource(), context.getEvent());
+        Object data = exec(context.getSource(), context.getEvent(), context.getTarget());
         return new ActionResult(context.getTarget(), data);
     }
 
-    public Object exec(S source, Event<E> event) {
-        return null;
-    }
+    public abstract Object exec(S source, Event<E> event, S target);
 }
