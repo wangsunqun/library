@@ -1,5 +1,6 @@
-package com.wsq.library.statemachine;
+package com.wsq.library.statemachine.common;
 
+import com.wsq.library.statemachine.context.AbstractContext;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,9 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 @NoArgsConstructor
 public abstract class DefaultAction<S extends Enum<S>, E extends Enum<E>> {
-    private StateMachineContext<S, E> context;
+    private AbstractContext<S, E> context;
 
-    public DefaultAction(StateMachineContext<S, E> context) {
+    public DefaultAction(AbstractContext<S, E> context) {
         this.context = context;
     }
 

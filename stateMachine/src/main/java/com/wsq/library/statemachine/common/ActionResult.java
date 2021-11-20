@@ -1,4 +1,4 @@
-package com.wsq.library.statemachine;
+package com.wsq.library.statemachine.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

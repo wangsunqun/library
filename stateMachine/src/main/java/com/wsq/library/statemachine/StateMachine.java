@@ -1,8 +1,14 @@
 package com.wsq.library.statemachine;
 
 import cn.hutool.core.map.MapUtil;
-import com.wsq.library.statemachine.config.AbstractStateMachineConfig;
+import com.wsq.library.statemachine.common.ActionResult;
+import com.wsq.library.statemachine.common.DefaultAction;
+import com.wsq.library.statemachine.common.Event;
+import com.wsq.library.statemachine.config.AbstractConfig;
+import com.wsq.library.statemachine.context.AbstractContext;
+import com.wsq.library.statemachine.context.ChoiceContext;
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
 
@@ -17,32 +23,36 @@ import java.util.*;
 public class StateMachine<S extends Enum<S>, E extends Enum<E>> {
     private S currentState;
 
-    private Map<S, Map<E, StateMachineContext<S, E>>> map = new HashMap<>();
+    private Map<S, Map<E, AbstractContext<S, E>>> map = new HashMap<>();
 
-    private static Map<String, AbstractStateMachineConfig<?, ?>> configMap = new LinkedHashMap<>();
+    private static Map<String, AbstractConfig<?, ?>> configMap = new LinkedHashMap<>();
 
     static {
-        ServiceLoader<AbstractStateMachineConfig> configs = ServiceLoader.load(AbstractStateMachineConfig.class);
+        ServiceLoader<AbstractConfig> configs = ServiceLoader.load(AbstractConfig.class);
 
-        for (AbstractStateMachineConfig<?, ?> config : configs) {
-            AbstractStateMachineConfig<?, ?> configObj = config.build();
+        for (AbstractConfig<?, ?> config : configs) {
+            AbstractConfig<?, ?> configObj = config.build();
             configMap.put(configObj.getStateMachineName(), configObj);
         }
     }
 
-    public StateMachine(String configName, S state) {
+    public StateMachine(String stateMachineName, S state) {
+        if (StringUtils.isBlank(stateMachineName)) {
+            throw new RuntimeException("stateMachineName miss");
+        }
+
         if (MapUtil.isEmpty(configMap)) {
             throw new RuntimeException("cannot find config");
         }
 
-        AbstractStateMachineConfig<?, ?> config = configMap.get(configName);
+        AbstractConfig<?, ?> config = configMap.get(stateMachineName);
         if (Objects.isNull(config)) {
-            throw new RuntimeException("cannot find config by: " + configName);
+            throw new RuntimeException("cannot find config by: " + stateMachineName);
         }
 
         config.getContextList().forEach(context -> map.computeIfAbsent((S) context.getSource(),
-                key -> new HashMap<E, StateMachineContext<S, E>>() {{
-                    put((E) context.getEvent().getEvent(), (StateMachineContext<S, E>) context);
+                key -> new HashMap<E, AbstractContext<S, E>>() {{
+                    put((E) context.getEvent().getEvent(), (AbstractContext<S, E>) context);
                 }}));
 
         this.currentState = state == null ? (S) config.getContextList().get(0).getSource() : state;
@@ -50,16 +60,41 @@ public class StateMachine<S extends Enum<S>, E extends Enum<E>> {
     }
 
     public ActionResult publish(Event<E> event) {
-        Map<E, StateMachineContext<S, E>> contextMap = map.get(currentState);
+        Map<E, AbstractContext<S, E>> contextMap = map.get(currentState);
 
         if (MapUtil.isNotEmpty(contextMap)) {
-            StateMachineContext<S, E> context = contextMap.get(event.getEvent());
+            AbstractContext<S, E> context = contextMap.get(event.getEvent());
 
-            if (Objects.nonNull(context)) {
-                DefaultAction<S, E> action = context.getAction();
-                if (Objects.nonNull(action)) {
-                    return action.doHandle();
-                }
+            if (Objects.isNull(context)) {
+                return null;
+            }
+
+            DefaultAction<S, E> action = context.getAction();
+
+            switch (context.getContextEnum()) {
+                case TRANSITION:
+                    break;
+                case CHOICE:
+                    ChoiceContext<S, E> choiceContext = (ChoiceContext<S, E>) context;
+
+                    S targetState;
+
+                    if (choiceContext.getSupplier().get()) {
+                        targetState = choiceContext.getYesTarget();
+                        action = choiceContext.getYesAction();
+                    } else {
+                        targetState = choiceContext.getNoTarget();
+                        action = choiceContext.getNoAction();
+                    }
+
+                    choiceContext.setTarget(targetState);
+                    break;
+            }
+
+            this.currentState = context.getTarget();
+
+            if (Objects.nonNull(action)) {
+                return action.doHandle();
             }
         }
 
