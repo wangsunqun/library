@@ -8,12 +8,11 @@
         <version>${library.version}</version>
     </parent>
 
-    <artifactId>json</artifactId>
-    <version>${json.version}</version>
+    <artifactId>gateway</artifactId>
+    <version>${gateway.version}</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>jackson</module>
-        <module>fastjson</module>
+        <module>shenyu</module>
     </modules>
 </project>

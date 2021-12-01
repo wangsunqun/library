@@ -5,11 +5,11 @@
     <parent>
         <groupId>com.wsq.library</groupId>
         <artifactId>library</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${library.version}</version>
     </parent>
 
     <artifactId>common</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>${common.version}</version>
     <packaging>jar</packaging>
 
     <dependencies>

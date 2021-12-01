@@ -5,11 +5,10 @@
     <parent>
         <groupId>com.wsq.library</groupId>
         <artifactId>json</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${json.version}</version>
     </parent>
 
     <artifactId>jackson</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <dependencies>

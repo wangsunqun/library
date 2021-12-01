@@ -5,14 +5,13 @@
     <parent>
         <groupId>com.wsq.library</groupId>
         <artifactId>library</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${library.version}</version>
     </parent>
 
     <artifactId>db-driver</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>${db-driver.version}</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>es</module>
     </modules>
 </project>

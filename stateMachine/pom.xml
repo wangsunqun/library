@@ -5,18 +5,13 @@
     <parent>
         <groupId>com.wsq.library</groupId>
         <artifactId>library</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${library.version}</version>
     </parent>
 
     <artifactId>stateMachine</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>${stateMachine.version}</version>
     <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.statemachine</groupId>
-            <artifactId>spring-statemachine-core</artifactId>
-            <version>2.0.2.RELEASE</version>
-        </dependency>
     </dependencies>
 </project>
