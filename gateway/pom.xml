@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>shenyu</module>
+        <module>gateway-starter</module>
+        <module>gateway-plugin</module>
     </modules>
 </project>

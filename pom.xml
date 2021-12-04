@@ -48,10 +48,13 @@
         <apollo.version>1.0.0</apollo.version>
         <hutool.version>5.6.3</hutool.version>
         <es.version>7.8.1</es.version>
+        <logstash.logback.json.version>6.6</logstash.logback.json.version>
+        <shenyu.gateway.version>2.4.1</shenyu.gateway.version>
     </properties>
 
     <dependencies>
-        <!--默认依赖Slf4j、Lombok、junit-test-->
+        <!--默认依赖Lombok、junit-test-->
+        <!-- 日志 -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -60,7 +63,15 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
+            <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash.logback.json.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -166,6 +177,13 @@
                 <groupId>org.elasticsearch</groupId>
                 <artifactId>elasticsearch</artifactId>
                 <version>${es.version}</version>
+            </dependency>
+
+            <!-- soul start -->
+            <dependency>
+                <groupId>org.apache.shenyu</groupId>
+                <artifactId>shenyu-web</artifactId>
+                <version>${shenyu.gateway.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

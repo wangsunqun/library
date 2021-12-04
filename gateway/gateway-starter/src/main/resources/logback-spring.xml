@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 设置上下文名字, 后面要用可以%contextName来使用 -->
+    <contextName>${spring.application.name}</contextName>
+
+    <!-- 定义变量，可以使“${}”来使用变量。 -->
+    <property name="LOG_HOME" value="./logs"/>
+    <property name="FILE_NAME" value="gateway-starter"/>
+
+    <!--输出到控制台-->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %level - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <!--输出到文件-->
+    <!-- 时间滚动输出 level为 INFO 日志 -->
+    <appender name="main" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 正在记录的日志文件的路径及文件名 -->
+        <file>${LOG_HOME}/${FILE_NAME}.log</file>
+        <!--日志文件输出格式-->
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <pattern>
+                    <pattern>
+                        {
+                        "timestamp":"%d{yyyy-MM-dd HH:mm:ss.SSS}",
+                        "log_level":"%level",
+                        "thread":"%t",
+                        "class_name":"%c",
+                        "message":"%m",
+                        "stack_trace":"%exception{5}",
+                        "req_id":"%X{reqId:-Nil}"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+
+        <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 每天日志归档路径以及格式 -->
+            <fileNamePattern>${LOG_HOME}/${FILE_NAME}-%d{yyyy-MM-dd}-%i.log.zip</fileNamePattern>
+            <maxHistory>15</maxHistory>
+            <maxFileSize>500MB</maxFileSize>
+        </rollingPolicy>
+        <!-- 此日志文件只记录info及以上级别的 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>info</level>
+            <onMatch>ACCEPT</onMatch>
+        </filter>
+    </appender>
+
+    <!-- 异步输出，能很大提升性能 -->
+    <appender name="FILE_ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="main"/>
+        <!-- 设置丢弃DEBUG、TRACE、INFO日志的阀值，当队列剩余小于设定的值时候触发，会保留WARN、ERROR级别，如果不设置的话默认保留队列中80%的日志 -->
+        <!-- <discardingThreshold>20000</discardingThreshold> -->
+        <!-- 设置队列入队时非阻塞，当队列满时会直接丢弃日志，但是对性能提升极大 -->
+        <neverBlock>true</neverBlock>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_ASYNC"/>
+    </root>
+
+    <!--过滤掉依赖库的无用log-->
+    <Logger name="org.springframework" level="info"/>
+    <Logger name="org.mybatis" level="info"/>
+</configuration>

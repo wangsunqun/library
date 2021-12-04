@@ -1,0 +1,9 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: @profileActive@
+management:
+  health:
+    defaults:
+      enabled: false

@@ -1,0 +1,14 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: @profileActive@
+management:
+  health:
+    defaults:
+      enabled: false
+
+shenyu:
+    sync:
+        websocket:
+            urls: ws://127.0.0.1:9095/websocket
