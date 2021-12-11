@@ -1,10 +1,13 @@
 package com.wsq.library.gateway.starter.filter;
 
 import com.wsq.library.gateway.starter.util.IpUtils;
+import org.reactivestreams.Publisher;
 import org.springframework.core.io.buffer.DataBuffer;
-import org.springframework.http.HttpMethod;
+import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpRequestDecorator;
+import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
@@ -12,9 +15,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Clock;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author wsq
@@ -22,7 +22,6 @@ import java.util.Map;
  * @date 2021/12/1 19:41
  */
 public class LogFilter implements WebFilter {
-    public static final String HEADERS = "headers";
     public static final String POST_BODY_PARAM = "postBodyParam";
     private static final String START_TIME_MIL = "startTime";
     private static final String CLIENT_IP = "clientIp";
@@ -30,45 +29,44 @@ public class LogFilter implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
+        StringBuilder sb = new StringBuilder();
 
-        setHeader(exchange, CLIENT_IP, IpUtils.getIpAddress(exchange.getRequest()));
-
+        exchange.getAttributes().put(CLIENT_IP, IpUtils.getIpAddress(request));
         exchange.getAttributes().put(START_TIME_MIL, Clock.systemUTC().millis());
-//        chain.filter(exchange)
 
-        return null;
-    }
+        return DataBufferUtils.join(request.getBody()).flatMap(dataBuffer -> {
+            DataBufferUtils.retain(dataBuffer);
+            exchange.getAttributes().put(POST_BODY_PARAM, dataBuffer);
 
-    private void setHeader(ServerWebExchange exchange, String key, String value) {
-        Map<String, String> headers = (Map<String, String>) exchange.getAttributes().computeIfAbsent(HEADERS, k -> new HashMap<String, String>());
-        headers.put(key, value);
+            return chain.filter(exchange.mutate().
+                    request(new PartnerServerHttpRequestDecorator(request, dataBuffer)).
+                    response(new PartnerServerHttpResponseDecorator(request, dataBuffer)).
+                    build());
+        });
     }
 
     public static class PartnerServerHttpRequestDecorator extends ServerHttpRequestDecorator {
-        private Flux<DataBuffer> body;
+        private final DataBuffer dataBuffer;
 
-        public PartnerServerHttpRequestDecorator(ServerHttpRequest delegate) {
+        public PartnerServerHttpRequestDecorator(ServerHttpRequest delegate, DataBuffer dataBuffer) {
             super(delegate);
-
-            String uri = delegate.getURI().toString();
-            HttpMethod method = delegate.getMethod();
-
-            Flux<DataBuffer> flux = super.getBody();
-
+            this.dataBuffer = dataBuffer;
         }
 
         @Override
         public Flux<DataBuffer> getBody() {
-            return body;
+            return Flux.defer(() -> Flux.just(dataBuffer.slice(0, dataBuffer.readableByteCount())));
         }
     }
 
-    public static void main(String[] args) {
-        Flux.just(Flux.just(new Integer[]{1, 11}, new Integer[]{2, 22})).flatMap(s -> s.).
-                subscribe(e -> System.out.print(e));
+    public static class PartnerServerHttpResponseDecorator extends ServerHttpResponseDecorator {
+        public PartnerServerHttpResponseDecorator(ServerHttpResponse delegate) {
+            super(delegate);
+        }
 
-//        Flux.just(new Integer[]{1, 11}, new Integer[]{2, 22}).flatMap(s -> Flux.fromArray(s)).
-//                subscribe(e -> System.out.print(e));
-
+        @Override
+        public Mono<Void> writeWith(Publisher<? extends DataBuffer> body) {
+            return super.writeWith(body);
+        }
     }
 }
