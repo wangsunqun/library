@@ -1,72 +1,105 @@
 package com.wsq.library.gateway.starter.filter;
 
 import com.wsq.library.gateway.starter.util.IpUtils;
+import com.wsq.library.gateway.starter.util.LogUtils;
+import com.wsq.library.gateway.starter.util.ParamUtils;
+import io.netty.buffer.ByteBufAllocator;
 import org.reactivestreams.Publisher;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferUtils;
+import org.springframework.core.io.buffer.NettyDataBufferFactory;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpRequestDecorator;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.NonNullApi;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import javax.validation.constraints.NotNull;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.time.Clock;
+import java.util.Objects;
 
 /**
  * @author wsq
  * @Description
  * @date 2021/12/1 19:41
  */
+@Component
+@Order(Ordered.HIGHEST_PRECEDENCE)
 public class LogFilter implements WebFilter {
-    public static final String POST_BODY_PARAM = "postBodyParam";
-    private static final String START_TIME_MIL = "startTime";
-    private static final String CLIENT_IP = "clientIp";
+    public static final String LOG_DATA = "logData";
 
+    @NonNull
     @Override
-    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+    public Mono<Void> filter(ServerWebExchange exchange, @NonNull WebFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
-        StringBuilder sb = new StringBuilder();
+        LogUtils logData = new LogUtils(request);
+        exchange.getAttributes().put(LOG_DATA, logData);
 
-        exchange.getAttributes().put(CLIENT_IP, IpUtils.getIpAddress(request));
-        exchange.getAttributes().put(START_TIME_MIL, Clock.systemUTC().millis());
-
-        return DataBufferUtils.join(request.getBody()).flatMap(dataBuffer -> {
-            DataBufferUtils.retain(dataBuffer);
-            exchange.getAttributes().put(POST_BODY_PARAM, dataBuffer);
-
-            return chain.filter(exchange.mutate().
-                    request(new PartnerServerHttpRequestDecorator(request, dataBuffer)).
-                    response(new PartnerServerHttpResponseDecorator(request, dataBuffer)).
-                    build());
-        });
+        return chain.filter(exchange.mutate().
+                request(new PartnerServerHttpRequestDecorator(exchange, logData)).
+                response(new PartnerServerHttpResponseDecorator(exchange, logData)).
+                build()).
+                then(Mono.fromRunnable(logData::log));
     }
 
     public static class PartnerServerHttpRequestDecorator extends ServerHttpRequestDecorator {
-        private final DataBuffer dataBuffer;
+        private final ServerWebExchange exchange;
+        private final LogUtils logData;
 
-        public PartnerServerHttpRequestDecorator(ServerHttpRequest delegate, DataBuffer dataBuffer) {
-            super(delegate);
-            this.dataBuffer = dataBuffer;
+        public PartnerServerHttpRequestDecorator(ServerWebExchange exchange, LogUtils logData) {
+            super(exchange.getRequest());
+            this.exchange = exchange;
+            this.logData = logData;
+            logData.setParams(ParamUtils.getParams(exchange));
         }
 
+        @NonNull
         @Override
         public Flux<DataBuffer> getBody() {
-            return Flux.defer(() -> Flux.just(dataBuffer.slice(0, dataBuffer.readableByteCount())));
+            return exchange.getRequest().getBody().map(dataBuffer -> {
+                DataBufferUtils.retain(dataBuffer);
+                logData.setParams(ParamUtils.postParams(dataBuffer));
+                return dataBuffer;
+            });
         }
     }
 
     public static class PartnerServerHttpResponseDecorator extends ServerHttpResponseDecorator {
-        public PartnerServerHttpResponseDecorator(ServerHttpResponse delegate) {
-            super(delegate);
+        private final ServerWebExchange exchange;
+        private final LogUtils logData;
+
+        public PartnerServerHttpResponseDecorator(ServerWebExchange exchange, LogUtils logData) {
+            super(exchange.getResponse());
+            this.exchange = exchange;
+            this.logData = logData;
         }
 
+        @NonNull
         @Override
-        public Mono<Void> writeWith(Publisher<? extends DataBuffer> body) {
-            return super.writeWith(body);
+        public Mono<Void> writeWith(@NonNull Publisher<? extends DataBuffer> body) {
+            return super.writeWith(DataBufferUtils.join(body).map(dataBuffer -> {
+                byte[] content = new byte[dataBuffer.readableByteCount()];
+                dataBuffer.read(content);
+                DataBufferUtils.release(dataBuffer);
+                String result = new String(content, StandardCharsets.UTF_8);
+
+                logData.setResponse(result);
+
+                byte[] uppedContent = new String(content, StandardCharsets.UTF_8).getBytes();
+                return exchange.getResponse().bufferFactory().wrap(uppedContent);
+            }));
         }
     }
 }

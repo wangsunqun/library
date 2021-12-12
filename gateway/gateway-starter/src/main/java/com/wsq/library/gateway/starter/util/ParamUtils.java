@@ -11,8 +11,7 @@ import org.springframework.web.server.ServerWebExchange;
 
 import java.nio.CharBuffer;
 import java.nio.charset.StandardCharsets;
-
-import static com.wsq.library.gateway.starter.filter.LogFilter.POST_BODY_PARAM;
+import java.util.Objects;
 
 /**
  * 获取请求参数
@@ -23,24 +22,22 @@ import static com.wsq.library.gateway.starter.filter.LogFilter.POST_BODY_PARAM;
 public class ParamUtils {
     public static String getParams(ServerWebExchange exchange) {
         ServerHttpRequest request = exchange.getRequest();
-        HttpMethod method = request.getMethod();
-
-        StringBuilder params = new StringBuilder();
-        if (method == HttpMethod.GET) {
-            MultiValueMap<String, String> queryParams = request.getQueryParams();
-            if (MapUtils.isNotEmpty(queryParams)) {
-                JSONObject param = new JSONObject();
-                queryParams.forEach((k, v) -> param.put(k, v.get(0)));
-                params.append(param.toJSONString());
-            }
-        } else {
-            DataBuffer dataBuffer = exchange.getAttribute(POST_BODY_PARAM);
-            CharBuffer charBuffer = StandardCharsets.UTF_8.decode(dataBuffer.asByteBuffer());
-            DataBufferUtils.release(dataBuffer);
-            //获取request body
-            params.append(charBuffer);
+        MultiValueMap<String, String> queryParams = request.getQueryParams();
+        if (MapUtils.isNotEmpty(queryParams)) {
+            JSONObject param = new JSONObject();
+            queryParams.forEach((k, v) -> param.put(k, v.get(0)));
+            return param.toJSONString();
         }
 
-        return params.toString();
+        return null;
+    }
+
+    public static String postParams(DataBuffer dataBuffer) {
+        if (Objects.isNull(dataBuffer)) return null;
+
+        CharBuffer charBuffer = StandardCharsets.UTF_8.decode(dataBuffer.asByteBuffer());
+        DataBufferUtils.release(dataBuffer);
+        //获取request body
+        return charBuffer.toString();
     }
 }
