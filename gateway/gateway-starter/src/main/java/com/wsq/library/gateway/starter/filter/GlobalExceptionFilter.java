@@ -5,19 +5,26 @@ import com.wsq.library.gateway.starter.util.LogUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shenyu.common.utils.GsonUtils;
 import org.apache.shenyu.plugin.api.result.ShenyuResultWrap;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.DefaultErrorWebExceptionHandler;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.*;
+import org.springframework.web.reactive.result.view.ViewResolver;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -25,10 +32,15 @@ import java.util.Objects;
 @Slf4j
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
+@EnableConfigurationProperties({ServerProperties.class, ResourceProperties.class})
 public class GlobalExceptionFilter extends DefaultErrorWebExceptionHandler {
 
-    public GlobalExceptionFilter(ErrorAttributes errorAttributes, ResourceProperties resourceProperties, ErrorProperties errorProperties, ApplicationContext applicationContext) {
-        super(errorAttributes, resourceProperties, errorProperties, applicationContext);
+    public GlobalExceptionFilter(ErrorAttributes errorAttributes, ResourceProperties resourceProperties, ServerProperties serverProperties,
+                                 ObjectProvider<List<ViewResolver>> viewResolverProvider, ServerCodecConfigurer serverCodecConfigurer, ApplicationContext applicationContext) {
+        super(errorAttributes, resourceProperties, serverProperties.getError(), applicationContext);
+        setViewResolvers(viewResolverProvider.getIfAvailable(Collections::emptyList));
+        setMessageWriters(serverCodecConfigurer.getWriters());
+        setMessageReaders(serverCodecConfigurer.getReaders());
     }
 
     @Override
@@ -46,8 +58,7 @@ public class GlobalExceptionFilter extends DefaultErrorWebExceptionHandler {
 
     @Override
     protected Map<String, Object> getErrorAttributes(ServerRequest request, boolean includeStackTrace) {
-        Throwable error = getError(request);
-        log.info(request.exchange().getLogPrefix() + formatError(error, request));
+        log.info("全局异常拦截!", getError(request));
 
         return response(request);
     }
