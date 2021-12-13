@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.wsq.library.gateway.starter.common.config.ShenyuConfiguration

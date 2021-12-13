@@ -17,6 +17,7 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -27,19 +28,16 @@ import java.nio.charset.StandardCharsets;
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class LogFilter implements WebFilter {
-    public static final String LOG_DATA = "logData";
-
     @NonNull
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, @NonNull WebFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         LogUtils logData = new LogUtils(request);
-        exchange.getAttributes().put(LOG_DATA, logData);
 
         return chain.filter(exchange.mutate().
-                request(new PartnerServerHttpRequestDecorator(exchange, logData)).
-                response(new PartnerServerHttpResponseDecorator(exchange, logData)).
-                build()).
+                        request(new PartnerServerHttpRequestDecorator(exchange, logData)).
+                        response(new PartnerServerHttpResponseDecorator(exchange, logData)).
+                        build()).
                 then(Mono.fromRunnable(logData::log));
     }
 

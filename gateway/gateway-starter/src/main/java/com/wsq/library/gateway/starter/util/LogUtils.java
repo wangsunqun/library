@@ -25,8 +25,17 @@ public class LogUtils {
         this.requestIp = IpUtils.getIpAddress(request);
     }
 
+
+    public String getValue() {
+        return "path: " + path + ", " +
+                "method: " + method + ", " +
+                "requestIp: " + requestIp + ", " +
+                "params: " + params + ", " +
+                "response: " + response + ", " +
+                "costTime: " + (Clock.systemUTC().millis() - startTime) + "ms";
+    }
+
     public void log() {
-        log.info("path: {}, method: {}, requestIp: {}, params: {}, response: {}, costTime: {}ms",
-                path, method, requestIp, params, response, Clock.systemUTC().millis() - startTime);
+        log.info(getValue());
     }
 }
