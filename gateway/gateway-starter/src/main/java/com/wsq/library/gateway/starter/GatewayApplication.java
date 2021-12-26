@@ -17,8 +17,7 @@ public class GatewayApplication {
     }
 
     @RequestMapping("t")
-    public String ttt(String a) {
-        throw new RuntimeException("dsjksdfj");
-//        return a.toString();
+    public String ttt(@RequestBody String a) {
+        return a;
     }
 }
