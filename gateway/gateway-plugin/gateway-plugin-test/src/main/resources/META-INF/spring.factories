@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.wsq.library.gateway.plugin.test.TestPlugin,\
+    com.wsq.library.gateway.plugin.test.handler.TestPluginHandler

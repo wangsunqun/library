@@ -14,4 +14,11 @@
     <modules>
         <module>gateway-plugin-test</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-plugin-base</artifactId>
+        </dependency>
+    </dependencies>
 </project>

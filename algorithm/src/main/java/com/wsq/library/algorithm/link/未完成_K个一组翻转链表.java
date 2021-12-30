@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 
-public class 题目_K个一组翻转链表 {
+public class 未完成_K个一组翻转链表 {
     private static class ListNode {
         int val;
         ListNode next;

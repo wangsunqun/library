@@ -52,6 +52,7 @@
         <es.version>7.8.1</es.version>
         <logstash.logback.json.version>6.6</logstash.logback.json.version>
         <shenyu.gateway.version>2.4.1</shenyu.gateway.version>
+        <springcloud.version>2.2.0.RELEASE</springcloud.version>
     </properties>
 
     <dependencies>

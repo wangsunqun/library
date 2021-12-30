@@ -13,8 +13,19 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.wsq.library</groupId>
+            <artifactId>gateway-plugin-test</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-web</artifactId>
         </dependency>
 
         <dependency>
@@ -29,7 +40,7 @@
 
         <dependency>
             <groupId>org.apache.shenyu</groupId>
-            <artifactId>shenyu-web</artifactId>
+            <artifactId>shenyu-spring-boot-starter-sync-data-websocket</artifactId>
         </dependency>
 
         <!--if you use http proxy start this-->
@@ -59,17 +70,61 @@
         </dependency>
         <!-- shenyu context-path plugin end-->
 
-        <!--shenyu response plugin start-->
+        <!-- shenyu waf plugin starter-->
         <dependency>
             <groupId>org.apache.shenyu</groupId>
-            <artifactId>shenyu-spring-boot-starter-plugin-response</artifactId>
+            <artifactId>shenyu-spring-boot-starter-plugin-waf</artifactId>
         </dependency>
-        <!--shenyu response plugin end-->
+        <!-- shenyu waf plugin end-->
 
+        <!-- shenyu monitor plugin starter-->
+        <dependency>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-spring-boot-starter-plugin-monitor</artifactId>
+        </dependency>
+        <!-- shenyu monitor plugin end-->
+
+        <!-- shenyu ratelimiter plugin start-->
+        <dependency>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-spring-boot-starter-plugin-ratelimiter</artifactId>
+        </dependency>
+        <!-- shenyu ratelimiter plugin end-->
+
+        <!-- shenyu hystrix plugin start-->
+        <dependency>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-spring-boot-starter-plugin-hystrix</artifactId>
+        </dependency>
+        <!-- shenyu hystrix plugin end-->
+
+        <!-- shenyu sentinel plugin start-->
         <dependency>
             <groupId>org.apache.shenyu</groupId>
             <artifactId>shenyu-spring-boot-starter-plugin-sentinel</artifactId>
         </dependency>
+        <!-- shenyu sentinel plugin end-->
+
+        <!--shenyu debug plugin start-->
+        <dependency>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-spring-boot-starter-plugin-logging</artifactId>
+        </dependency>
+        <!--shenyu debug plugin end-->
+
+        <!--shenyu websocket plugin start-->
+        <dependency>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-spring-boot-starter-plugin-websocket</artifactId>
+        </dependency>
+        <!--shenyu websocket plugin end-->
+
+        <!--shenyu data sync start use consul-->
+        <dependency>
+            <groupId>org.apache.shenyu</groupId>
+            <artifactId>shenyu-spring-boot-starter-sync-data-consul</artifactId>
+        </dependency>
+
     </dependencies>
 
     <profiles>

@@ -11,4 +11,4 @@ management:
 shenyu:
     sync:
         websocket:
-            urls: ws://127.0.0.1:9095/websocket
+            urls: ws://localhost:9095/websocket
