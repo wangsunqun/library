@@ -1,4 +1,4 @@
-package com.wsq.library.algorithm.link;
+package com.wsq.library.algorithm.math.前缀和;
 
 /**
  * @author wsq
