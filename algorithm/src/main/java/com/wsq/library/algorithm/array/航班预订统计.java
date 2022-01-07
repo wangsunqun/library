@@ -1,8 +1,8 @@
-package com.wsq.library.algorithm.math.差分;
+package com.wsq.library.algorithm.array;
 
 import com.alibaba.fastjson.JSON;
 
-/**
+/** 差分
  * @author wsq
  * @Description
  * @date 2022/1/6 18:17
