@@ -14,6 +14,7 @@
 
     <modules>
         <module>gateway-starter</module>
+        <module>gateway-plugin</module>
     </modules>
 
     <dependencyManagement>

@@ -17,6 +17,7 @@
         <module>common</module>
         <module>db-driver</module>
         <module>json</module>
+        <module>netty-protobuf</module>
         <module>stateMachine</module>
         <module>timingWheel</module>
         <module>gateway</module>
@@ -31,6 +32,7 @@
         <common.version>1.0.0-SNAPSHOT</common.version>
         <db-driver.version>1.0.0-SNAPSHOT</db-driver.version>
         <json.version>1.0.0-SNAPSHOT</json.version>
+        <netty-protobuf.version>1.0.0-SNAPSHOT</netty-protobuf.version>
         <stateMachine.version>1.0.0-SNAPSHOT</stateMachine.version>
         <timingWheel.version>1.0.0-SNAPSHOT</timingWheel.version>
         <gateway.version>1.0.0-SNAPSHOT</gateway.version>
@@ -53,6 +55,8 @@
         <logstash.logback.json.version>6.6</logstash.logback.json.version>
         <shenyu.gateway.version>2.4.1</shenyu.gateway.version>
         <springcloud.version>2.2.0.RELEASE</springcloud.version>
+        <protobuf.version>3.1.0</protobuf.version>
+        <netty-all.version>4.1.70.Final</netty-all.version>
     </properties>
 
     <dependencies>
@@ -180,6 +184,18 @@
                 <groupId>org.elasticsearch</groupId>
                 <artifactId>elasticsearch</artifactId>
                 <version>${es.version}</version>
+            </dependency>
+
+            <!-- netty&protobuf -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty-all.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
