@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 注意：字段没有泛型，那么要类型和名字一样才能拷贝，如果有泛型，那么会泛型擦除要注意！！！
  *
  * @author wsq
- * 2021/2/7 13:44
+ * 2021/2/7 13:45
  */
 public class BeanCopierUtil {
     /**
