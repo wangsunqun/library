@@ -2,6 +2,7 @@ package com.wsq.library.common.beanCopy;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Map;
 import java.util.Objects;
@@ -34,6 +35,7 @@ public class BeanCopierUtil {
         getCopier(srcObj.getClass(), destObj.getClass(), true).copy(srcObj, destObj, new SkipNullConverter());
     }
 
+    // destClass 必须有无参构造器
     public static <T> T copy(final Object srcObj, final Class<T> destClass) {
         if (Objects.isNull(srcObj) || Objects.isNull(destClass)) {
             throw new RuntimeException("参数为空");
