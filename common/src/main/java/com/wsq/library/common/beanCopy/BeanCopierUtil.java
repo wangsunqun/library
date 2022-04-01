@@ -59,23 +59,6 @@ public class BeanCopierUtil {
         getCopier(srcObj.getClass(), destObj.getClass(), false).copy(srcObj, destObj, null);
     }
 
-    public static <T> T copyWithNull(final Object srcObj, final Class<T> destClass) {
-        if (Objects.isNull(srcObj) || Objects.isNull(destClass)) {
-            throw new RuntimeException("参数为空");
-        }
-
-        T t;
-        try {
-            t = destClass.newInstance();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-        getCopier(srcObj.getClass(), destClass, false).copy(srcObj, t, null);
-
-        return t;
-    }
-
     private static BeanCopierPlus getCopier(Class<?> source, Class<?> target, boolean converter) {
         CopierIdentity key = new CopierIdentity(source, target);
         BeanCopierPlus copier;
