@@ -2,7 +2,6 @@ package com.wsq.library.common.beanCopy;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Map;
 import java.util.Objects;
@@ -48,7 +47,7 @@ public class BeanCopierUtil {
             throw new RuntimeException(e);
         }
 
-        getCopier(srcObj.getClass(), destClass, true).copy(srcObj, t, new SkipNullConverter());
+        getCopier(srcObj.getClass(), destClass, false).copy(srcObj, t, null);
 
         return t;
     }

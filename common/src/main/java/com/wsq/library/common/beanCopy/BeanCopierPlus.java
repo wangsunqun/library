@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class BeanCopierPlus {
-    private static final BeanCopierPlus.BeanCopierPlusKey KEY_FACTORY = (BeanCopierPlus.BeanCopierPlusKey) KeyFactory.create(BeanCopierPlus.BeanCopierPlusKey.class);
+    private static final BeanCopierPlusKey KEY_FACTORY = (BeanCopierPlusKey) KeyFactory.create(BeanCopierPlusKey.class);
     private static final Type CONVERTER = TypeUtils.parseType(CopyConverter.class.getCanonicalName());
     private static final Type BEAN_COPIER = TypeUtils.parseType(BeanCopierPlus.class.getCanonicalName());
     private static final Signature COPY;
@@ -21,7 +21,7 @@ public abstract class BeanCopierPlus {
     }
 
     public static BeanCopierPlus create(Class source, Class target, boolean useConverter) {
-        BeanCopierPlus.Generator gen = new BeanCopierPlus.Generator();
+        Generator gen = new Generator();
         gen.setSource(source);
         gen.setTarget(target);
         gen.setUseConverter(useConverter);
@@ -99,6 +99,7 @@ public abstract class BeanCopierPlus {
             // 获取copy方法
             CodeEmitter e = ce.begin_method(1, BeanCopierPlus.COPY, null);
 
+            PropertyDescriptor[] sourceSetters = ReflectUtils.getBeanSetters(this.source);
             PropertyDescriptor[] sourceGetters = ReflectUtils.getBeanGetters(this.source);
             PropertyDescriptor[] targetSetters = ReflectUtils.getBeanSetters(this.target);
             PropertyDescriptor[] targetGetters = ReflectUtils.getBeanGetters(this.target);
@@ -106,6 +107,11 @@ public abstract class BeanCopierPlus {
             Map<String, PropertyDescriptor> sourceGetterMap = new HashMap<>();
             for (PropertyDescriptor descriptor : sourceGetters) {
                 sourceGetterMap.put(descriptor.getName(), descriptor);
+            }
+
+            Map<String, PropertyDescriptor> sourceSetterMap = new HashMap<>();
+            for (PropertyDescriptor descriptor : sourceSetters) {
+                sourceSetterMap.put(descriptor.getName(), descriptor);
             }
 
             Map<String, PropertyDescriptor> targetGetterMap = new HashMap<>();
@@ -136,18 +142,24 @@ public abstract class BeanCopierPlus {
             }
 
             for (PropertyDescriptor targetSetter : targetSetters) {
+                PropertyDescriptor sourceSetter = sourceSetterMap.get(targetSetter.getName());
                 PropertyDescriptor sourceGetter = sourceGetterMap.get(targetSetter.getName());
                 PropertyDescriptor targetGetter = targetGetterMap.get(targetSetter.getName());
 
                 if (sourceGetter != null) {
                     MethodInfo sourceRead = ReflectUtils.getMethodInfo(sourceGetter.getReadMethod());
+                    MethodInfo sourceWrite = ReflectUtils.getMethodInfo(sourceSetter.getWriteMethod());
                     MethodInfo targetRead = ReflectUtils.getMethodInfo(targetGetter.getReadMethod());
                     MethodInfo targetWrite = ReflectUtils.getMethodInfo(targetSetter.getWriteMethod());
 
                     // ps字节码变成没有花括号，所以有时候觉得加载有点怪
                     if (this.useConverter) {
                         // 获取目标字段类型
-                        Type setterType = targetWrite.getSignature().getArgumentTypes()[0];
+                        Type sourceFieldType = sourceWrite.getSignature().getArgumentTypes()[0];
+                        // 获取目标字段类型
+                        Type targetFieldType = targetWrite.getSignature().getArgumentTypes()[0];
+                        if (!sourceFieldType.getClassName().equals(targetFieldType.getClassName())) continue;
+
                         // 加载局部变量，对应var4
                         e.load_local(targetLocal);
                         // 加载copy方法第三个参数，也就是converter，对应var3
@@ -159,7 +171,7 @@ public abstract class BeanCopierPlus {
                         // 装箱，对应new Integer(var5.getA())
                         e.box(sourceRead.getSignature().getReturnType());
                         // 对应Integer.TYPE
-                        EmitUtils.load_class(e, setterType);
+                        EmitUtils.load_class(e, targetFieldType);
                         // 对应"setA"
                         e.push(targetWrite.getSignature().getName());
 
@@ -173,7 +185,7 @@ public abstract class BeanCopierPlus {
                         // 执行converter方法
                         e.invoke_interface(BeanCopierPlus.CONVERTER, BeanCopierPlus.CONVERT);
                         // 拆箱及null赋0，对应var10001 == null ? 0 : ((Number)var10001).intValue()
-                        e.unbox_or_zero(setterType);
+                        e.unbox_or_zero(targetFieldType);
                         // 执行target的set方法，对应var4.setA
                         e.invoke(targetWrite);
                     } else if (compatible(sourceGetter, targetSetter)) {
