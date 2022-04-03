@@ -99,24 +99,12 @@ public abstract class BeanCopierPlus {
             // 获取copy方法
             CodeEmitter e = ce.begin_method(1, BeanCopierPlus.COPY, null);
 
-            PropertyDescriptor[] sourceSetters = ReflectUtils.getBeanSetters(this.source);
             PropertyDescriptor[] sourceGetters = ReflectUtils.getBeanGetters(this.source);
             PropertyDescriptor[] targetSetters = ReflectUtils.getBeanSetters(this.target);
-            PropertyDescriptor[] targetGetters = ReflectUtils.getBeanGetters(this.target);
 
             Map<String, PropertyDescriptor> sourceGetterMap = new HashMap<>();
             for (PropertyDescriptor descriptor : sourceGetters) {
                 sourceGetterMap.put(descriptor.getName(), descriptor);
-            }
-
-            Map<String, PropertyDescriptor> sourceSetterMap = new HashMap<>();
-            for (PropertyDescriptor descriptor : sourceSetters) {
-                sourceSetterMap.put(descriptor.getName(), descriptor);
-            }
-
-            Map<String, PropertyDescriptor> targetGetterMap = new HashMap<>();
-            for (PropertyDescriptor descriptor : targetGetters) {
-                targetGetterMap.put(descriptor.getName(), descriptor);
             }
 
             Local targetLocal = e.make_local();
@@ -142,19 +130,17 @@ public abstract class BeanCopierPlus {
             }
 
             for (PropertyDescriptor targetSetter : targetSetters) {
-                PropertyDescriptor sourceSetter = sourceSetterMap.get(targetSetter.getName());
                 PropertyDescriptor sourceGetter = sourceGetterMap.get(targetSetter.getName());
-                PropertyDescriptor targetGetter = targetGetterMap.get(targetSetter.getName());
 
                 if (sourceGetter != null) {
                     MethodInfo sourceRead = ReflectUtils.getMethodInfo(sourceGetter.getReadMethod());
-                    MethodInfo sourceWrite = ReflectUtils.getMethodInfo(sourceSetter.getWriteMethod());
-                    MethodInfo targetRead = ReflectUtils.getMethodInfo(targetGetter.getReadMethod());
+                    MethodInfo sourceWrite = ReflectUtils.getMethodInfo(sourceGetter.getWriteMethod());
+                    MethodInfo targetRead = ReflectUtils.getMethodInfo(targetSetter.getReadMethod());
                     MethodInfo targetWrite = ReflectUtils.getMethodInfo(targetSetter.getWriteMethod());
 
                     // ps字节码变成没有花括号，所以有时候觉得加载有点怪
                     if (this.useConverter) {
-                        // 获取目标字段类型
+                        // 获取源字段类型
                         Type sourceFieldType = sourceWrite.getSignature().getArgumentTypes()[0];
                         // 获取目标字段类型
                         Type targetFieldType = targetWrite.getSignature().getArgumentTypes()[0];
