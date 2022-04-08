@@ -91,14 +91,10 @@ public class Trie {
     }
 
     public List<SearchResult> search(String keyWord) {
-        // 去空格
-        keyWord = keyWord.replace(" ", "");
-        // 统一转成小写
-        keyWord = keyWord.toLowerCase();
-
         List<SearchResult> result = new TreeList<>();
 
         TrieNode node = root;
+        keyWord = preHandle(keyWord);
         for (int i = 0; i < keyWord.length(); i++) {
             while (Objects.nonNull(node)) {
                 TrieNode tmp = node.children.get(keyWord.charAt(i));
@@ -115,6 +111,29 @@ public class Trie {
         }
 
         return result;
+    }
+
+    private static String preHandle(String keyWord) {
+        // 去空格
+        // 如果空格前面是英文那么不去空格，这段是老顾之前为了兼容英文搜索加的，但是其实有bug，比如c 你妈，按照老顾的逻辑是不会被匹配到的
+        keyWord = keyWord.trim();
+
+        char[] chars = keyWord.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == ' ') {
+                char preC = chars[i - 1];
+                if ((preC < 'a' || preC > 'z') && (preC < 'A' || preC > 'Z')) {
+                    chars[i] = '\u0000';
+                }
+            }
+        }
+
+        keyWord = new String(chars);
+
+        // 统一转成小写
+        keyWord = keyWord.toLowerCase();
+
+        return keyWord;
     }
 
     private void isEndNode(int index, TrieNode node, List<SearchResult> res) {
@@ -146,6 +165,6 @@ public class Trie {
 //        List<SearchResult> isherso = trie.search("sheriheo");
 //        System.out.println(JSON.toJSONString(isherso));
 
-        System.out.println(trie.filter("sheriheo"));
+        System.out.println(trie.filter("sh eriheo"));
     }
 }
