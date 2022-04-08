@@ -15,8 +15,7 @@
 
     <modules>
         <module>common</module>
-        <module>db-driver</module>
-        <module>json</module>
+        <module>ac</module>
         <module>netty-protobuf</module>
         <module>stateMachine</module>
         <module>timingWheel</module>
@@ -31,12 +30,12 @@
         <!-- 子版本号 -->
         <common.version>1.0.0-SNAPSHOT</common.version>
         <db-driver.version>1.0.0-SNAPSHOT</db-driver.version>
-        <json.version>1.0.0-SNAPSHOT</json.version>
         <netty-protobuf.version>1.0.0-SNAPSHOT</netty-protobuf.version>
         <stateMachine.version>1.0.0-SNAPSHOT</stateMachine.version>
         <timingWheel.version>1.0.0-SNAPSHOT</timingWheel.version>
         <gateway.version>1.0.0-SNAPSHOT</gateway.version>
         <algorithm.version>1.0.0-SNAPSHOT</algorithm.version>
+        <ac.version>1.0.0-SNAPSHOT</ac.version>
 
         <java.version>1.8</java.version>
 
