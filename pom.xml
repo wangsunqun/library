@@ -16,6 +16,7 @@
     <modules>
         <module>common</module>
         <module>ac</module>
+        <module>pay</module>
         <module>netty-protobuf</module>
         <module>stateMachine</module>
         <module>timingWheel</module>
@@ -36,6 +37,7 @@
         <gateway.version>1.0.0-SNAPSHOT</gateway.version>
         <algorithm.version>1.0.0-SNAPSHOT</algorithm.version>
         <ac.version>1.0.0-SNAPSHOT</ac.version>
+        <pay.version>1.0.0-SNAPSHOT</pay.version>
 
         <java.version>1.8</java.version>
 
@@ -111,11 +113,6 @@
     <dependencyManagement>
         <dependencies>
             <!-- 本地项目 -->
-            <dependency>
-                <groupId>com.wsq.library</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${library.version}</version>
-            </dependency>
 
             <!-- OkHttp -->
             <dependency>
