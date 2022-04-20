@@ -15,8 +15,7 @@ public class Trie {
         private Character value;
         private TrieNode parent;
         private TrieNode fail;
-        private Boolean isEnd = false;
-        private List<Integer> output = new TreeList<>();
+        private Set<Integer> output = new HashSet<>();
         private Map<Character, TrieNode> children = new HashMap<>();
     }
 
@@ -37,7 +36,6 @@ public class Trie {
             old = cur;
         }
 
-        old.isEnd = true;
         old.output.add(word.length());
     }
 
@@ -165,6 +163,6 @@ public class Trie {
 //        List<SearchResult> isherso = trie.search("sheriheo");
 //        System.out.println(JSON.toJSONString(isherso));
 
-        System.out.println(trie.filter("sh eriheo"));
+        System.out.println(trie.filter("sheriheo"));
     }
 }
