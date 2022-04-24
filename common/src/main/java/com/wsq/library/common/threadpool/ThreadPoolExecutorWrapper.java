@@ -6,11 +6,20 @@ import java.util.function.Consumer;
 public class ThreadPoolExecutorWrapper {
     private ThreadPoolExecutor threadPoolExecutor;
 
+    public static ThreadPoolExecutorWrapper buildBlockTPWithTimeout(int corePoolSize,
+                                                                    int maximumPoolSize, long timeout, TimeUnit unit) {
+        return build(corePoolSize, maximumPoolSize, 100, TimeUnit.MILLISECONDS, new SynchronousQueue<>(), Executors.defaultThreadFactory(), (r, executor) -> {
+            try {
+                executor.getQueue().offer(r, timeout, unit);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
     public static ThreadPoolExecutorWrapper buildBlockTP(int corePoolSize,
-                                                         int maximumPoolSize,
-                                                         long keepAliveTime,
-                                                         TimeUnit unit) {
-        return build(corePoolSize, maximumPoolSize, keepAliveTime, unit, new SynchronousQueue<>(), Executors.defaultThreadFactory(), (r, executor) -> {
+                                                         int maximumPoolSize) {
+        return build(corePoolSize, maximumPoolSize, 100, TimeUnit.MILLISECONDS, new SynchronousQueue<>(), Executors.defaultThreadFactory(), (r, executor) -> {
             try {
                 executor.getQueue().put(r);
             } catch (InterruptedException e) {
