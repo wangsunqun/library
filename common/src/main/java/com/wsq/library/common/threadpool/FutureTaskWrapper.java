@@ -27,9 +27,7 @@ public class FutureTaskWrapper<V> extends FutureTask<V> {
     public FutureTaskWrapper(Runnable runnable, Runnable doneHandle, Consumer<Throwable> exceptionHandle) {
         super(runnable, null);
         this.doneHandle = doneHandle;
-        this.exceptionHandle = Objects.nonNull(exceptionHandle) ? exceptionHandle : throwable -> {
-            throw new RuntimeException(throwable);
-        };
+        this.exceptionHandle = exceptionHandle;
     }
 
     @Override
@@ -47,7 +45,7 @@ public class FutureTaskWrapper<V> extends FutureTask<V> {
     }
 
     @Override
-    public V get() throws InterruptedException, ExecutionException {
+    public V get() throws InterruptedException {
         try {
             return super.get();
         } catch (ExecutionException ignored) {
@@ -58,7 +56,7 @@ public class FutureTaskWrapper<V> extends FutureTask<V> {
     }
 
     @Override
-    public V get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
+    public V get(long timeout, TimeUnit unit) throws InterruptedException, TimeoutException {
         try {
             return super.get(timeout, unit);
         } catch (ExecutionException ignored) {
