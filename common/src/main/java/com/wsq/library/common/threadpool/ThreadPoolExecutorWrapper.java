@@ -3,6 +3,9 @@ package com.wsq.library.common.threadpool;
 import java.util.concurrent.*;
 import java.util.function.Consumer;
 
+/**
+ * futuretask版本
+ */
 public class ThreadPoolExecutorWrapper {
     private ThreadPoolExecutor threadPoolExecutor;
 
