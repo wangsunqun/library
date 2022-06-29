@@ -29,30 +29,30 @@ public class Main {
 
         ActionResult publish1 = machine.publish(new Event<>(WRITE));
         if (Objects.nonNull(publish1))
-        System.out.println("1发布write事件，结果: 当前状态: " + publish1.getNextState().name() + ", 返回: " + publish1.getData());
+        System.out.println("1发布write事件，结果: 当前状态: " + publish1.getCurrentState().name() + ", 返回: " + publish1.getData());
 
         ActionResult publish2 = machine.publish(new Event<>(CHECK));
         if (Objects.nonNull(publish2))
-        System.out.println("2发布check事件，结果: 当前状态: " + publish2.getNextState().name() + ", 返回: " + publish2.getData());
+        System.out.println("2发布check事件，结果: 当前状态: " + publish2.getCurrentState().name() + ", 返回: " + publish2.getData());
 
 
         ActionResult publish3 = machine.publish(new Event<>(DEAL));
         if (Objects.nonNull(publish3))
-        System.out.println("3发布deal事件，结果: 当前状态: " + publish3.getNextState().name() + ", 返回: " + publish3.getData());
+        System.out.println("3发布deal事件，结果: 当前状态: " + publish3.getCurrentState().name() + ", 返回: " + publish3.getData());
 
 
         ActionResult publish4 = machine.publish(new Event<>(SUBMIT));
         if (Objects.nonNull(publish4))
-        System.out.println("4发布submit事件，结果: 当前状态: " + publish4.getNextState().name() + ", 返回: " + publish4.getData());
+        System.out.println("4发布submit事件，结果: 当前状态: " + publish4.getCurrentState().name() + ", 返回: " + publish4.getData());
 
 
         ActionResult publish5 = machine.publish(new Event<>(CHECK));
         if (Objects.nonNull(publish5))
-        System.out.println("5发布check事件，结果: 当前状态: " + publish5.getNextState().name() + ", 返回: " + publish5.getData());
+        System.out.println("5发布check事件，结果: 当前状态: " + publish5.getCurrentState().name() + ", 返回: " + publish5.getData());
 
         ActionResult publish6 = machine.publish(new Event<>(SUBMIT));
         if (Objects.nonNull(publish6))
-        System.out.println("6发布submit事件，结果: 当前状态: " + publish6.getNextState().name() + ", 返回: " + publish6.getData());
+        System.out.println("6发布submit事件，结果: 当前状态: " + publish6.getCurrentState().name() + ", 返回: " + publish6.getData());
 
         System.out.println();
     }

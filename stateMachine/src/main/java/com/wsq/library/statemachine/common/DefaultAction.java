@@ -19,7 +19,7 @@ public abstract class DefaultAction<S extends Enum<S>, E extends Enum<E>> {
         log.info("开始执行状态任务, event:{}, source:{}, target:{}",
                 context.getEvent(), context.getSource(), context.getTarget());
         Object data = exec(context.getSource(), context.getEvent(), context.getTarget());
-        return new ActionResult(context.getTarget(), data);
+        return new ActionResult(context.getSource(), context.getTarget(), data);
     }
 
     public abstract Object exec(S source, Event<E> event, S target);

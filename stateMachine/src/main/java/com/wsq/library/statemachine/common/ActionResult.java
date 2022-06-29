@@ -6,6 +6,9 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ActionResult {
-    private Enum<?> nextState;
+    // 上一个状态
+    private Enum<?> lastState;
+    // 当前状态
+    private Enum<?> currentState;
     private Object data;
 }

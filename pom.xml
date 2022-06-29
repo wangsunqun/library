@@ -16,7 +16,7 @@
     <modules>
         <module>common</module>
         <module>ac</module>
-        <module>pay</module>
+        <module>sc</module>
         <module>netty-protobuf</module>
         <module>stateMachine</module>
         <module>timingWheel</module>
@@ -38,6 +38,7 @@
         <algorithm.version>1.0.0-SNAPSHOT</algorithm.version>
         <ac.version>1.0.0-SNAPSHOT</ac.version>
         <pay.version>1.0.0-SNAPSHOT</pay.version>
+        <sc.version>1.0.0-SNAPSHOT</sc.version>
 
         <java.version>1.8</java.version>
 
@@ -55,7 +56,8 @@
         <es.version>7.8.1</es.version>
         <logstash.logback.json.version>6.6</logstash.logback.json.version>
         <shenyu.gateway.version>2.4.1</shenyu.gateway.version>
-        <springcloud.version>2.2.0.RELEASE</springcloud.version>
+        <springcloud.version>Hoxton.SR5</springcloud.version>
+        <springcloudalibaba.version>2.2.5.RELEASE</springcloudalibaba.version>
         <protobuf.version>3.1.0</protobuf.version>
         <netty-all.version>4.1.70.Final</netty-all.version>
     </properties>
