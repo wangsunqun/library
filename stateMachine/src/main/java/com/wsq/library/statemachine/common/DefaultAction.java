@@ -18,9 +18,19 @@ public abstract class DefaultAction<S extends Enum<S>, E extends Enum<E>> {
     public ActionResult doHandle() {
         log.info("开始执行状态任务, event:{}, source:{}, target:{}",
                 context.getEvent(), context.getSource(), context.getTarget());
-        Object data = exec(context.getSource(), context.getEvent(), context.getTarget());
-        return new ActionResult(context.getSource(), context.getTarget(), data);
+
+        ActionResult actionResult;
+        try {
+            actionResult = exec(context.getSource(), context.getEvent(), context.getTarget());
+        } catch (Exception e) {
+            log.error("状态机任务执行失败, event:{}, source:{}, target:{}",
+                    context.getEvent(), context.getSource(), context.getTarget(), e);
+            actionResult = new ActionResult();
+            actionResult.setStatus(false);
+        }
+
+        return actionResult;
     }
 
-    public abstract Object exec(S source, Event<E> event, S target);
+    public abstract ActionResult exec(S source, Event<E> event, S target);
 }
