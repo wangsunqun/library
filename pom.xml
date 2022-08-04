@@ -22,6 +22,7 @@
         <module>timingWheel</module>
         <module>gateway</module>
         <module>algorithm</module>
+        <module>cache</module>
     </modules>
 
     <properties>
@@ -39,6 +40,7 @@
         <ac.version>1.0.0-SNAPSHOT</ac.version>
         <pay.version>1.0.0-SNAPSHOT</pay.version>
         <sc.version>1.0.0-SNAPSHOT</sc.version>
+        <cache.version>1.0.0-SNAPSHOT</cache.version>
 
         <java.version>1.8</java.version>
 
