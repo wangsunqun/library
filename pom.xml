@@ -41,6 +41,7 @@
         <pay.version>1.0.0-SNAPSHOT</pay.version>
         <sc.version>1.0.0-SNAPSHOT</sc.version>
         <cache.version>1.0.0-SNAPSHOT</cache.version>
+        <quasar.version>1.0.0-SNAPSHOT</quasar.version>
 
         <java.version>1.8</java.version>
 

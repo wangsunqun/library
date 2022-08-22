@@ -1,6 +1,5 @@
 package com.wsq.library.netty;
 
-import com.wsq.library.netty.protobuf.UserInfo;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.socket.SocketChannel;

@@ -1,0 +1,22 @@
+//使用 proto3 语法 ,未指定则使用proto2
+syntax = "proto3";
+
+//proto 文件包名
+package proto;
+
+//生成 proto 文件所在包路径，一般来说是和文件包名一致就可以
+option java_package = "com.wsq.library.netty.protobuf";
+
+//生成 proto 的文件名
+option java_outer_classname="UserProto";
+
+
+//创建一个 User 对象
+message User{
+	//自身属性
+	int32 id = 1;
+	string code = 2;
+	string name = 3;
+
+}
+
